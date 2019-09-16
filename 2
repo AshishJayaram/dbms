@@ -1,0 +1,61 @@
+1.Consider the relations 
+PART (PNO,PNAME, COLOUR), 
+SUPPLIER ( SNO, SNAME, ADDRESS)
+SUPPLY (PNO, SNO, QUANTITY)
+Create the above tables, insert suitable tuples and perform the following operations in 
+Oracle SQL:
+
+SQL> select *
+  2  from part0
+  3  ;
+
+       PNO PNAME		COLOUR
+---------- -------------------- --------------------
+	 1 engine		grey
+	 2 oil			green
+	 3 seal 		green
+	 4 body 		red
+	 5 chassis		grey
+
+SQL> select *
+  2  from supp1;
+
+       SNO SNAME		ADDRESS
+---------- -------------------- --------------------
+	 1 Ram			devanhalli
+	 2 Sham 		hubli
+	 3 Naam 		blore
+
+SQL> select *
+  2  from supply2;
+
+       PNO	  SNO	QUANTITY
+---------- ---------- ----------
+	 1	    1	      20
+	 1	    2	      15
+	 1	    3	      10
+	 2	    3	       5
+	 4	    2	      50
+	 4	    1	      35
+	 3	    1	      25
+	 3	    2	      25
+	 5	    3	      15
+
+9 rows selected.
+
+a. Obtain the PNO of parts supplied by supplier „Ram‟.
+
+SQL> select pno
+  2  from supply2
+  3  where sno = (select sno
+  4  from supp1
+  5  where sname='Ram');
+
+       PNO
+----------
+	 1
+	 3
+	 4
+b.Obtain the Names of suppliers who supply engines
+
+

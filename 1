@@ -1,0 +1,79 @@
+.
+Execute the following exercises 
+1.
+Consider the relations 
+EMPLOYEE (SSN, Name, DeptNo)
+ASSIGNED_TO (USN,ProjectNo) 
+PROJECT (ProjectNo, ProjectArea)
+Create the above tables, insert suitable tuples and perform the following operations 
+in    Oracle SQL
+
+SQL> select *
+  2  from emp;
+
+SSN	   NAME 		    DEPTNO
+---------- -------------------- ----------
+1	   Pikachu			 5
+2	   Raichu			 5
+3	   pigee			 4
+4	   pigeot			 4
+5	   pigeotaa			 4
+6	   macha			 3
+7	   machomp			 3
+8	   machamp			 3
+
+8 rows selected.
+
+SQL> select *
+  2  from assign_to;
+
+USN	    PROJECTNO
+---------- ----------
+1		    3
+2		    2
+3		    1
+4		    2
+5		    3
+6		    1
+7		    2
+8		    3
+
+8 rows selected.
+
+SQL> select *
+  2  from project;
+
+ PROJECTNO PROJECTARE
+---------- ----------
+	 2 mid-size
+	 1 small-size
+	 3 large-size
+	
+a.Obtain the SSN of employees assigned to mid-size projects-
+
+SQL> select usn
+  2  from assign_to
+  3  where projectno = (select projectno
+  4  from project
+  5  where projectarea='mid-size');
+
+USN
+----------
+2
+4
+7
+
+b. Find the number of employees working in each department
+
+SQL> select count(deptno),deptno
+  2  from emp
+  3  group by deptno;
+
+COUNT(DEPTNO)	  DEPTNO
+------------- ----------
+	    2	       5
+	    3	       4
+	    3	       3
+
+
+
