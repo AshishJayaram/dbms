@@ -58,4 +58,22 @@ SQL> select pno
 	 4
 b.Obtain the Names of suppliers who supply engines
 
+SQL> select sname
+  2  from supp1
+  3  where sno in (
+  4  		select sno
+  5  		from supply2
+  6  		where pno = (
+  7  			select pno
+  8  			from part0
+  9 			where pname = 'engine')
+ 10  		);
+
+SNAME
+--------------------
+Ram
+Sham
+Naam
+
+
 
